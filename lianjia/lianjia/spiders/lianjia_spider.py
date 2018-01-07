@@ -13,7 +13,7 @@ from lianjia.items import LianjiaItem
 
 class LianJiaSpider(CrawlSpider):
     name = 'lianjia'
-    roominfoow_domains = ['sh.lianjia.com']
+    allowed_domains = ['sh.lianjia.com']
     start_urls = ['http://sh.lianjia.com/ershoufang']
 
     pageLink = LinkExtractor(allow='/ershoufang/d\d+')
@@ -61,7 +61,8 @@ class LianJiaSpider(CrawlSpider):
             if len(zones) > 1:
                 area = zones[1]
 
-            buildTime = element.xpath('.//span[@class="info-col row2-text"]/text()').extract()[-1].replace('|', '').strip()
+            buildTime = element.xpath('.//span[@class="info-col row2-text"]/text()').extract()[-1].replace('|',
+                                                                                                           '').strip()
 
             money = ''
             for item in element.xpath('.//div[@class="info-col price-item main"]/span/text()').extract():
