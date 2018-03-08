@@ -194,7 +194,7 @@ class NewsPipeline(object):
         self.conn.commit()
         return item
 
-    def close_spider(self):
+    def close_spider(self,spider):
         self.cursor.close()
         self.conn.close()
 ```
